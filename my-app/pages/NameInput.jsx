@@ -13,23 +13,23 @@ const LoginScreen = ({ navigation }) => {
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
-          placeholder="user"
+          placeholder="Username"
           value={username}
           onChangeText={setUsername}
           autoCapitalize="none"
         />
         <TextInput
           style={styles.input}
-          placeholder="pass"
+          placeholder="Password"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
         />
-        <Button
+        {username != '' && password != '' && <Button
           title='Set Preferences'
           onPress={() => navigation.navigate('Preferences')}
           style={styles.button}
-        />
+        />}
       </View>
     </View>
   );
@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#ccc',
+    justifyContent: 'center',
     padding: 10,
     borderRadius: 15,
     margin: 10,
