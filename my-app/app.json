@@ -4,10 +4,10 @@
     "slug": "my-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./logo/LogoBlue.png",
+    "icon": "./logo/LogoLoad.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./logo/LogoBlue.png",
+      "image": "./logo/LogoLoad.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -19,12 +19,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./logo/LogoBlue.png",
+        "foregroundImage": "./logo/LogoLoad.png",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
-      "favicon": "./logo/LogoBlue.png"
+      "favicon": "./logo/LogoLoad.png"
     }
   }
 }
