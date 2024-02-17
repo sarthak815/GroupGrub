@@ -28,12 +28,12 @@ export default function App() {
         <Stack.Screen
           name='NameInput'
           component={NameInput}
-          options={{ title: 'NameInput' }}
+          options={{ title: 'Login' }}
         />
         <Stack.Screen
           name='Preferences'
           component={Preferences}
-          options={{ title: 'restrictions' }}
+          options={{ title: 'Preferences' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

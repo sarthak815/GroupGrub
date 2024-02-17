@@ -13,26 +13,25 @@ const LoginScreen = ({ navigation }) => {
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
-          placeholder="user"
+          placeholder="Username"
           value={username}
           onChangeText={setUsername}
           autoCapitalize="none"
         />
         <TextInput
           style={styles.input}
-          placeholder="pass"
+          placeholder="Password"
           value={password}
           onChangeText={setPassword}
           secureTextEntry
         />
-        <Button
+        {username != '' && password != '' && <Button
           text='Log in'
           onPress={() => navigation.navigate('Preferences')}
           style={styles.button}
-          textStyles={styles.text}
-        >
-          <Image source={require('../icons/arrow.png')}></Image>
-        </Button>
+          textStyles={styles.text}>
+            <Image source={require('../icons/arrow.png')}></Image>
+        </Button> }
       </View>
     </View>
   );
@@ -61,8 +60,8 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   button: {
-    backgroundColor: '#265174',
-    padding: 15,
+    backgroundColor: '#ccc',
+    padding: 10,
     borderRadius: 15,
     margin: 15,
   },
