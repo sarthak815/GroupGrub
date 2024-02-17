@@ -3,14 +3,13 @@ import { View, Text, StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import Button from '../components/button.component';
+import ImageButton from '../components/imageButton.component';
 
 const restrictions = ({ navigation }) => {
   const [veggie, setVeggie] = useState(false);
   const [vegan, setVegan] = useState(false);
   const [dairyFree, setDairyFree] = useState(false);
   const [keto, setKeto] = useState(false);
-;
-
 
   return (
     <View style={styles.container}>
@@ -19,14 +18,16 @@ const restrictions = ({ navigation }) => {
         <Text>Please Select your Food Preferences</Text>
         <View style={{ flexDirection:"row" }}>
             <Button
-                title='Vegetarian'
+                text='Vegetarian'
                 onPress={() => setVeggie(true)}
                 style={veggie ? styles.pressed : styles.button}
+                textStyles={styles.text}
             />
             <Button
-                title='Vegan'
+                text='Vegan'
                 onPress={() => setVegan(true)}
                 style={vegan ? styles.pressed : styles.button}
+                textStyles={styles.text}
             />
         </View>
         <StatusBar style='auto' />
@@ -41,6 +42,16 @@ const restrictions = ({ navigation }) => {
                 onPress={() => setKeto(true)}
                 style={keto ? styles.pressed : styles.button}
             />
+        </View>
+        <View style={styles.imgContainer}>
+          <ImageButton
+            source={require('../icons/nextIcon.png')}
+            onPress={() => navigation.navigate('Preferences')}/>
+        </View>
+        <View style={styles.imgContainer}>
+          <ImageButton
+            source={require('../icons/nextIcon.png')}
+            onPress={() => navigation.navigate('Preferences')}/>
         </View>
     </View>
   );
@@ -61,18 +72,16 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 30
   },
-  pressed: {
-    backgroundColor: '#e3ebdd',
-    padding: 10,
-    borderRadius: 15,
-    margin: 10,
-    
-  },
   button: {
-    backgroundColor: '#4fb489',
+    backgroundColor: '#F9FBEF',
     padding: 10,
     borderRadius: 15,
     margin: 10,
-    
   },
+  imgContainer: {
+    alignItems: 'center',
+  },
+  text: {
+    color: '#000000'
+  }
 });
