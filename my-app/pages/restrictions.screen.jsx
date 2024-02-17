@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import Button from '../components/button.component';
-import ImageButton from '../components/imageButton.component';
+import ImageButton from '../components/imagebutton.component';
 
 const restrictions = ({ navigation }) => {
   const [veggie, setVeggie] = useState(false);
