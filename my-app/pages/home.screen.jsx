@@ -9,14 +9,14 @@ const HomeScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text>Home Screen</Text>
+      <Text style={styles.text}>Welcome to Group Grub</Text>
       <Button
         title='Go to Details'
         onPress={() => navigation.navigate('Details')}
         style={styles.button}
       />
       <Button
-        title='Go to NameInput'
+        title='Create an Account / Log In'
         onPress={() => navigation.navigate('NameInput')}
         style={styles.button}
       />
@@ -34,8 +34,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     height: '100%',
   },
+  text: {
+    fontSize: 30
+  },
   button: {
-    backgroundColor: '#ccc',
+    backgroundColor: '#4fb489',
     padding: 10,
     borderRadius: 15,
     margin: 10,
