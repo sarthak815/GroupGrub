@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import Button from '../components/button.component';
-import ImageButton from '../components/imageButton.component';
+import ImageButton from '../components/imagebutton.component';
 
 const restrictions = ({ navigation }) => {
   const [veggie, setVeggie] = useState(false);
@@ -33,20 +33,17 @@ const restrictions = ({ navigation }) => {
         <StatusBar style='auto' />
         <View style={{ flexDirection:"row" }}>
             <Button
-                title='Dairy Free'
+                text='Dairy Free'
                 onPress={() => setDairyFree(true)}
                 style={dairyFree ? styles.pressed : styles.button}
+                textStyles={styles.text}
             />
             <Button
-                title='Keto'
+                text='Keto'
                 onPress={() => setKeto(true)}
                 style={keto ? styles.pressed : styles.button}
+                textStyles={styles.text}
             />
-        </View>
-        <View style={styles.imgContainer}>
-          <ImageButton
-            source={require('../icons/nextIcon.png')}
-            onPress={() => navigation.navigate('Preferences')}/>
         </View>
         <View style={styles.imgContainer}>
           <ImageButton
@@ -61,7 +58,7 @@ export default restrictions;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: '#FEFFFD',
     alignItems: 'center',
     justifyContent: 'top',
     height: '100%',

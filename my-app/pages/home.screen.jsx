@@ -8,7 +8,7 @@ const HomeScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to GroupGrub</Text>
       <View style={styles.inputContainer}>
-        {/* <Image source=""></Image> */}
+      <Image source={require('../logo/logo.png')} style={styles.logo}></Image>
         <Button
           text='Create an Account / Log in'
           onPress={() => navigation.navigate('NameInput')}
@@ -27,16 +27,18 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     paddingTop: 100,
+    justifyContent: 'center',
   },
   title: {
     fontSize: 25,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 60,
     textAlign: 'center',
     color: '#265073',
   },
   inputContainer: {
     marginBottom: 20,
+    flex: 1,
   },
   input: {
     height: 40,
@@ -57,7 +59,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   imgContainer: {
-    alignItems: 'center',
+  },
+  logo: {
+    width: 300,
+    height: 300,
+    marginBottom: 50,
+    alignSelf: 'center',
+    resizeMode: 'contain',
   },
 });
 
