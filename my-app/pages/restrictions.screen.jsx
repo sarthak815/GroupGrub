@@ -33,20 +33,17 @@ const restrictions = ({ navigation }) => {
         <StatusBar style='auto' />
         <View style={{ flexDirection:"row" }}>
             <Button
-                title='Dairy Free'
+                text='Dairy Free'
                 onPress={() => setDairyFree(true)}
                 style={dairyFree ? styles.pressed : styles.button}
+                textStyles={styles.text}
             />
             <Button
-                title='Keto'
+                text='Keto'
                 onPress={() => setKeto(true)}
                 style={keto ? styles.pressed : styles.button}
+                textStyles={styles.text}
             />
-        </View>
-        <View style={styles.imgContainer}>
-          <ImageButton
-            source={require('../icons/nextIcon.png')}
-            onPress={() => navigation.navigate('Preferences')}/>
         </View>
         <View style={styles.imgContainer}>
           <ImageButton
