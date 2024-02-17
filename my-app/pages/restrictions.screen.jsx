@@ -5,9 +5,11 @@ import { StatusBar } from 'expo-status-bar';
 import Button from '../components/button.component';
 
 const restrictions = ({ navigation }) => {
-  //const [veggie, setVegie] = useState('');
-  var vegie = false, vegan = false, dairyFree = false, keto = false, glutenFree = false, 
-  noChick = false, noBeef = false, noPork = false, noFish = false;
+  const [veggie, setVeggie] = useState(false);
+  const [vegan, setVegan] = useState(false);
+  const [dairyFree, setDairyFree] = useState(false);
+  const [keto, setKeto] = useState(false);
+;
 
 
   return (
@@ -18,29 +20,30 @@ const restrictions = ({ navigation }) => {
         <View style={{ flexDirection:"row" }}>
             <Button
                 title='Vegetarian'
-                onPress={() => vegie = true}
-                style={vegie ? styles.unpress : styles.button}
+                onPress={() => setVeggie(true)}
+                style={veggie ? styles.pressed : styles.button}
             />
             <Button
                 title='Vegan'
-                onPress={() => (vegan = true)}
-                style={styles.button}
+                onPress={() => setVegan(true)}
+                style={vegan ? styles.pressed : styles.button}
             />
         </View>
         <StatusBar style='auto' />
         <View style={{ flexDirection:"row" }}>
             <Button
                 title='Dairy Free'
-                style={styles.button}
+                onPress={() => setDairyFree(true)}
+                style={dairyFree ? styles.pressed : styles.button}
             />
             <Button
                 title='Keto'
-                style={styles.button}
+                onPress={() => setKeto(true)}
+                style={keto ? styles.pressed : styles.button}
             />
         </View>
     </View>
   );
-  console.log(vegan);
 };
 
 export default restrictions;
@@ -58,7 +61,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 30
   },
-  unpress: {
+  pressed: {
     backgroundColor: '#e3ebdd',
     padding: 10,
     borderRadius: 15,
