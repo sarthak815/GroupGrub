@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { View, TextInput, StyleSheet, Text } from 'react-native';
 
+import Button from '../components/button.component';
+
 const LoginScreen = ({ navigation }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -22,6 +24,11 @@ const LoginScreen = ({ navigation }) => {
           value={password}
           onChangeText={setPassword}
           secureTextEntry
+        />
+        <Button
+          title='Set Preferences'
+          onPress={() => navigation.navigate('Preferences')}
+          style={styles.button}
         />
       </View>
     </View>
@@ -49,6 +56,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: 10,
     padding: 10,
+  },
+  button: {
+    backgroundColor: '#ccc',
+    padding: 10,
+    borderRadius: 15,
+    margin: 10,
   },
 });
 
