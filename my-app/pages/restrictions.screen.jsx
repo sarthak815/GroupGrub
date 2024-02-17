@@ -10,12 +10,13 @@ const restrictions = ({ navigation }) => {
   const [vegan, setVegan] = useState(false);
   const [dairyFree, setDairyFree] = useState(false);
   const [keto, setKeto] = useState(false);
+  const [gf, setGF] = useState(false);
+  const [pesketarian, setPesketarian] = useState(false);
 
   return (
     <View style={styles.container}>
       <View style={styles.margin}></View>
-        <Text style={styles.text}>Welcome</Text>
-        <Text>Please Select your Food Preferences</Text>
+        <Text style={styles.title}>Please Select your Food Preferences:</Text>
         <View style={{ flexDirection:"row" }}>
             <Button
                 text='Vegetarian'
@@ -45,6 +46,20 @@ const restrictions = ({ navigation }) => {
                 textStyles={styles.text}
             />
         </View>
+        <View style={{ flexDirection:"row" }}>
+            <Button
+                text='Gluten Free'
+                onPress={() => setGF(true)}
+                style={gf ? styles.pressed : styles.button}
+                textStyles={styles.text}
+            />
+            <Button
+                text='Pesketarian'
+                onPress={() => setPesketarian(true)}
+                style={pesketarian ? styles.pressed : styles.button}
+                textStyles={styles.text}
+            />
+        </View>
         <View style={styles.imgContainer}>
           <ImageButton
             source={require('../icons/nextIcon.png')}
@@ -60,25 +75,40 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#FEFFFD',
     alignItems: 'center',
-    justifyContent: 'top',
     height: '100%',
+    paddingTop: 50,
+  },
+  title: {
+    fontSize: 30,
+    marginBottom: 10,
+    color: '#265073',
   },
   margin: {
     marginTop: 20,
   },
   text: {
-    fontSize: 30
+    fontSize: 20,
+    color: '#000000'
   },
   button: {
     backgroundColor: '#F9FBEF',
     padding: 10,
     borderRadius: 15,
+    // borderWidth: 2,
+    // borderColor: '#265073',
     margin: 10,
+    justifyContent: 'flex-end'
   },
   imgContainer: {
     alignItems: 'center',
   },
-  text: {
-    color: '#000000'
-  }
+  pressed: {
+    borderColor: '#9AD0C2',
+    backgroundColor: '#F9FBEF',
+    borderWidth: 2.5,
+    padding: 10,
+    borderRadius: 15,
+    margin: 10,
+    justifyContent: 'flex-end',
+  },
 });
