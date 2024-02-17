@@ -11,7 +11,7 @@ const HomeScreen = ({ navigation }) => {
         {/* <Image source=""></Image> */}
         <Button
           text='Create an Account / Log in'
-          onPress={() => navigation.navigate('Preferences')}
+          onPress={() => navigation.navigate('NameInput')}
           style={styles.button}
           textStyles={styles.text}
         >

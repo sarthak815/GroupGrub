@@ -1,11 +1,24 @@
 import React, { useState } from 'react';
 import { View, TextInput, StyleSheet, Text, Image } from 'react-native';
+import { firebase, db } from '../Backend_Firebase/config';
+import { collection, addDoc } from 'firebase/firestore';
+
 
 import Button from '../components/button.component';
 
 const LoginScreen = ({ navigation }) => {
+  const todoRef = collection(db,'users'); 
+  const [addData, setAddData] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  
+  const addField = () => {
+    const data = {
+      name: username,
+      password: password,
+    };
+    addDoc(todoRef, data);
+  }
 
   return (
     <View style={styles.container}>
@@ -27,7 +40,7 @@ const LoginScreen = ({ navigation }) => {
         />
         {username != '' && password != '' && <Button
           text='Log in'
-          onPress={() => navigation.navigate('Preferences')}
+          onPress={() => {username => setAddData(username); password => setAddData(password); addField(); navigation.navigate('Preferences');}}
           style={styles.button}
           textStyles={styles.text}>
             <Image source={require('../icons/arrow.png')}></Image>
