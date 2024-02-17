@@ -19,7 +19,7 @@ export default DetailsScreen;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: '#FEFFFD',
     alignItems: 'center',
     justifyContent: 'center',
     height: '100%',

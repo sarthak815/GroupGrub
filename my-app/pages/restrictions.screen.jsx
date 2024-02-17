@@ -58,7 +58,7 @@ export default restrictions;
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: '#FEFFFD',
     alignItems: 'center',
     justifyContent: 'top',
     height: '100%',
