@@ -10,8 +10,6 @@ const restrictions = ({ navigation }) => {
   const [vegan, setVegan] = useState(false);
   const [dairyFree, setDairyFree] = useState(false);
   const [keto, setKeto] = useState(false);
-;
-
 
   return (
     <View style={styles.container}>
