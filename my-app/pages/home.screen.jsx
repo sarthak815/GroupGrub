@@ -1,46 +1,64 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
+import React, { useState } from 'react';
+import { View, StyleSheet, Text, Image } from 'react-native';
 
 import Button from '../components/button.component';
 
 const HomeScreen = ({ navigation }) => {
-  const [posts, setPosts] = useState([]);
-
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Welcome to Group Grub</Text>
-      <Button
-        title='Go to Details'
-        onPress={() => navigation.navigate('Details')}
-        style={styles.button}
-      />
-      <Button
-        title='Create an Account / Log In'
-        onPress={() => navigation.navigate('NameInput')}
-        style={styles.button}
-      />
-      <StatusBar style='auto' />
+      <Text style={styles.title}>Welcome to GroupGrub</Text>
+      <View style={styles.inputContainer}>
+        {/* <Image source=""></Image> */}
+        <Button
+          text='Create an Account / Log in'
+          onPress={() => navigation.navigate('Preferences')}
+          style={styles.button}
+          textStyles={styles.text}
+        >
+          <Image source={require('../icons/arrow.png')}></Image>
+        </Button>
+      </View>
     </View>
   );
 };
 
-export default HomeScreen;
-
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    height: '100%',
+    flex: 1,
+    padding: 20,
+    paddingTop: 100,
   },
-  text: {
-    fontSize: 30
+  title: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    marginBottom: 20,
+    textAlign: 'center',
+    color: '#265073',
+  },
+  inputContainer: {
+    marginBottom: 20,
+  },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginBottom: 10,
+    padding: 10,
   },
   button: {
-    backgroundColor: '#4fb489',
-    padding: 10,
+    backgroundColor: '#265174',
+    padding: 15,
     borderRadius: 15,
-    margin: 10,
+    margin: 15,
+  },
+  text: {
+    color: '#fff',
+    fontSize: 20,
+    textAlign: 'center',
+  },
+  imgContainer: {
+    alignItems: 'center',
   },
 });
+
+export default HomeScreen;

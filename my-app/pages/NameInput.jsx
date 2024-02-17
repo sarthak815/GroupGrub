@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, Text } from 'react-native';
+import { View, TextInput, StyleSheet, Text, Image } from 'react-native';
 
 import Button from '../components/button.component';
 
@@ -26,10 +26,13 @@ const LoginScreen = ({ navigation }) => {
           secureTextEntry
         />
         <Button
-          title='Set Preferences'
+          text='Log in'
           onPress={() => navigation.navigate('Preferences')}
           style={styles.button}
-        />
+          textStyles={styles.text}
+        >
+          <Image source={require('../icons/arrow.png')}></Image>
+        </Button>
       </View>
     </View>
   );
@@ -42,7 +45,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   title: {
-    fontSize: 24,
+    fontSize: 25,
     fontWeight: 'bold',
     marginBottom: 20,
     textAlign: 'center',
@@ -58,10 +61,16 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   button: {
-    backgroundColor: '#ccc',
-    padding: 10,
+    backgroundColor: '#265174',
+    padding: 15,
     borderRadius: 15,
-    margin: 10,
+    margin: 15,
+  },
+  text: {
+    color: '#fff',
+  },
+  imgContainer: {
+    alignItems: 'center',
   },
 });
 
