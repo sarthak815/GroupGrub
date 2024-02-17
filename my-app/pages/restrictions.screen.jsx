@@ -1,38 +1,46 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Pressable } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 import Button from '../components/button.component';
 
-const HomeScreen = ({ navigation }) => {
+const restrictions = ({ navigation }) => {
   const [posts, setPosts] = useState([]);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Welcome</Text>
-      <Text>Please Select Food Preferences</Text>
-      <Button
-        title='Vegetarian'
-        style={styles.button}
-      />
-      <Button
-        title='Create an Account / Log In'
-        onPress={() => navigation.navigate('NameInput')}
-        style={styles.button}
-      />
-      <StatusBar style='auto' />
+      <View style={styles.margin}></View>
+        <Text style={styles.text}>Welcome</Text>
+        <Text>Please Select Food Preferences</Text>
+        <View style={{ flexDirection:"row" }}>
+            <Pressable>
+                <Button
+                    title='Vegetarian'
+                    onPress={() => { pressed } }
+                    style={styles.button}
+                />
+            </Pressable>
+            <Button
+                title='Vegan'
+                style={styles.button}
+            />
+            <StatusBar style='auto' />
+        </View>
     </View>
   );
 };
 
-export default HomeScreen;
+export default restrictions;
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'top',
     height: '100%',
+  },
+  margin: {
+    marginTop: 20,
   },
   text: {
     fontSize: 30
