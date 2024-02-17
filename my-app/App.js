@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import HomeScreen from './pages/home.screen';
 import DetailsScreen from './pages/details.screen';
+import NameInput from './pages/NameInput';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,11 @@ export default function App() {
           name='Details'
           component={DetailsScreen}
           options={{ title: 'Details' }}
+        />
+        <Stack.Screen
+          name='NameInput'
+          component={NameInput}
+          options={{ title: 'NameInput' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
