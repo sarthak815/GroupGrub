@@ -20,8 +20,6 @@ const restrictions = ({ navigation, username }) => {
     const data = {
       veggie: veggie,
       vegan: vegan,
-      dairyFree: dairyFree,
-      keto: keto,
       gf: gf,
       pesketarian: pesketarian
     };
@@ -70,8 +68,7 @@ const restrictions = ({ navigation, username }) => {
         <View style={styles.imgContainer}>
           <ImageButton
             source={require('../icons/nextIcon.png')}
-            onPress={() => {veggie => setAddData(veggie); vegan => setAddData(vegan); 
-              dairyFree => setAddData(dairyFree); keto => setAddData(keto);
+            onPress={() => {veggie => setAddData(veggie); vegan => setAddData(vegan);
               gf => setAddData(gf); pesketarian => setAddData(pesketarian);
               addField();
               navigation.navigate('CuisineRec')}}/>
