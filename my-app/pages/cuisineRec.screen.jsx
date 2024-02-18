@@ -5,7 +5,6 @@ import { StatusBar } from 'expo-status-bar';
 import Button from '../components/button.component';
 import ImageButton from '../components/imagebutton.component';
 import { auth } from '../Backend_Firebase/config';
-import { doc, setDoc } from 'firebase/firestore';
 
 import { firebase, db } from '../Backend_Firebase/config';
 import { collection, addDoc, getDocs, doc, setDoc, updateDoc } from 'firebase/firestore';
@@ -179,7 +178,7 @@ const restrictions = ({ navigation }) => {
         <View style={styles.imgContainer}>
           <ImageButton
             source={require('../icons/nextIcon.png')}
-            onPress={() => handleImageButtonPress}/> 
+            onPress={() => navigation.navigate('FoodRec')}/> 
         </View>
     </View>
   );
