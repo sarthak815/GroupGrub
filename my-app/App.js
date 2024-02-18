@@ -81,8 +81,7 @@ export default function App() {
           component={BlankPage}
           options={{ title: 'BlankPage' }}
         />
-
-
+        <Stack.Screen
           name='CuisineRec'
           component={CuisineRec}
           options={{ title: 'Cuisine' }}
