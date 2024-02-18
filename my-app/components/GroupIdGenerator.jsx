@@ -73,8 +73,8 @@ async function getGroupMembersDetails(groupId) {
     const filteredUsersData = usersData.filter(userData => userData != null);
 
     // Concatenate all cuisines and dietary restrictions into separate strings
-    const allCuisines = filteredUsersData.map(userData => userData.cuisine).join(', ');
-    const allDietaryRestrictions = filteredUsersData.map(userData => userData.dietaryRestrictions).join(', ');
+    const allCuisines = filteredUsersData.map(userData => userData.cuisine).join(' ');
+    const allDietaryRestrictions = filteredUsersData.map(userData => userData.dietaryRestrictions).join(' ');
 
     return {
       allCuisines,
@@ -144,11 +144,11 @@ async function getGroupMembersDetails(groupId) {
 
     const url = 'http://ec2-18-144-29-168.us-west-1.compute.amazonaws.com/search';
     const data = {
-      categories: cuisinesString,
-      keywords: dietaryRestrictionsString,
+      categories: 'vietnamese italian  vietnamese italian american hawaiian jamaican',
+      keywords: 'veggie halal  vegan halal',
       latitude: 37.7749,
       longitude: -122.4194,
-      price: '$' 
+      price: '$$' 
     }
 
     // const data = {
