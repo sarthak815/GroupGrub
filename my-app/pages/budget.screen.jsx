@@ -4,22 +4,35 @@ import { StatusBar } from 'expo-status-bar';
 
 import Button from '../components/button.component';
 import ImageButton from '../components/imagebutton.component';
-import { firebase, db } from '../Backend_Firebase/config';
+import { firebase, db, auth } from '../Backend_Firebase/config';
 import { collection, addDoc, getDocs, doc, setDoc, updateDoc } from 'firebase/firestore';
 
-const restrictions = ({ navigation, username }) => {
+const Budget = ({ navigation }) => {
   const [cheap, setCheap] = useState(false);
   const [medium, setMedium] = useState(false);
   const [expensive, setExpensive] = useState(false);
   
-  const addField = () => {
-    const todoRef = doc(db,'users', 'user-' + username); 
-    const data = {
-      cheap: cheap,
-      medium: medium,
-      expensive: expensive,
-    };
-    updateDoc(todoRef, data); 
+  const addField = async() => {
+    // const usr = auth.currentUser;
+    // const todoRef = doc(db,'users', usr.uid); 
+    let check = "";
+    if(cheap){
+      check += "$";
+    }else if(medium){
+      check += "$$";
+    }else if(expensive){
+      check += "$$$";
+    }
+    const user = auth.currentUser;
+    if(user.uid){
+      const ref = doc(db, "users", user.uid);
+      await updateDoc(ref, {
+        money: check,
+      });
+    }
+    // console.log("5555555555")
+    // await updateDoc(todoRef, {money: check}); 
+    // console.log("6666666");
   }
 
   return (
@@ -49,13 +62,14 @@ const restrictions = ({ navigation, username }) => {
         <View style={styles.imgContainer}>
           <ImageButton
             source={require('../icons/nextIcon.png')}
-            onPress={() => navigation.navigate('GroupRec')}/>
+            onPress={() => { addField();
+              navigation.navigate('GroupRec');}}/>
         </View>
     </View>
   );
 };
 
-export default restrictions;
+export default Budget;
 
 const styles = StyleSheet.create({
   container: {
