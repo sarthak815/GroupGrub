@@ -11,8 +11,14 @@ const HomeScreen = ({ navigation }) => {
       <View style={styles.inputContainer}>
       <Image source={require('../logo/logo.png')} style={styles.logo}></Image>
         <Button
-          text='Create an Account / Log in'
-          onPress={() => navigation.navigate('NameInput')}
+          text='Create an Account'
+          onPress={() => navigation.navigate('Register')}
+          style={styles.button}
+          textStyles={styles.text}
+        ></Button>
+        <Button
+          text='Log in'
+          onPress={() => navigation.navigate('Login')}
           style={styles.button}
           textStyles={styles.text}
         >
