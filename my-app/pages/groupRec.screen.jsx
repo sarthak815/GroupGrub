@@ -4,6 +4,8 @@ import { db } from '../Backend_Firebase/config';
 import { getDocs, collection } from 'firebase/firestore';
 import { Button } from 'react-native';
 
+import Card from '../components/restaurantCard.component';
+
 const App = ({navigation}) => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState([]);
@@ -26,19 +28,7 @@ const App = ({navigation}) => {
 
   return (
     <View style={{flex: 1, padding: 24}}>
-      {isLoading ? (
-        <ActivityIndicator />
-      ) : (
-        <FlatList
-          data={data}
-          keyExtractor={({id}) => id}
-          renderItem={({item}) => (
-            <Text>
-              {item.title}, {item.releaseYear}
-            </Text>
-          )}
-        />
-      )}
+      <Card restaurant="BIRD DOG" address="420 Ramona St." rating={4.4}/>
       <Button
         title='Creating QR Code'
         onPress={() => navigation.navigate('QR_Generate')}

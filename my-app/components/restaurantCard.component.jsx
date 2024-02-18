@@ -5,7 +5,7 @@ const Card = (props) => {
     <View style={styles.container}>
     <View style={styles.headingContainer}>
     <Text style={styles.restaurant}>{props.restaurant}</Text>
-    <Text style={styles.rating}>{props.rating}</Text>
+    <Text style={styles.rating}>{props.rating} Stars</Text>
     </View>
     <View style={styles.line} />
     <Text style={styles.address}>{props.address}</Text>
