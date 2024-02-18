@@ -8,6 +8,8 @@ import HomeScreen from './pages/home.screen';
 import DetailsScreen from './pages/details.screen';
 import NameInput from './pages/NameInput';
 import Preferences from './pages/restrictions.screen';
+import GroupIdGenerator from './components/GroupIdGenerator';
+import QRCodeScannerComponent from './components/QRScan';
 import GroupRec from './pages/groupRec.screen';
 import Profile from './pages/profile.screen';
 import Scan from './pages/scan.screen';
@@ -52,6 +54,16 @@ export default function App() {
           name='Scan'
           component={Scan}
           options={{ title: 'Scanner' }}
+        />
+        <Stack.Screen
+          name='QR_Scan'
+          component={GroupIdGenerator}
+          options={{ title: 'QR_Scan' }}
+        />
+        <Stack.Screen
+          name='Scan'
+          component={QRCodeScannerComponent}
+          options={{ title: 'Scan' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -1,6 +1,11 @@
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import Button from '../components/button.component';
+import { db } from '../Backend_Firebase/config';
+import { getDocs, collection } from 'firebase/firestore';
 import React, { useState } from 'react';
 import { View, StyleSheet, Text, Image } from 'react-native';
-
 import Button from '../components/button.component';
 import navBar from '../components/navbar.component';
 
