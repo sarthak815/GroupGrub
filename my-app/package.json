@@ -9,12 +9,13 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@million/lint": "^0.0.32",
     "@react-native-community/masked-view": "^0.1.11",
     "@react-navigation/native": "^6.1.10",
     "@react-navigation/native-stack": "^6.9.18",
     "expo": "~50.0.7",
     "expo-status-bar": "~1.11.1",
-    "firebase": "10.7.1",
+    "firebase": "^10.7.1",
     "react": "18.2.0",
     "react-native": "0.73.4",
     "react-native-gesture-handler": "~2.14.0",

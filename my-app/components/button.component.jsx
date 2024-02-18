@@ -4,7 +4,8 @@ const Button = (props) => {
   return (
     <TouchableOpacity
       onPress={props.onPress}
-      style={props.style}>
+      style={props.style}
+      disabled={props.disabled ? props.disabled : false}>
       <Text style={props.textStyles}>{props.text}</Text>
     </TouchableOpacity>
   );
