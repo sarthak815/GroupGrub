@@ -16,6 +16,7 @@ import QRCodeScanner from './components/QRScan';
 import { ListMembers } from './components/ListComponents';
 import Register from './pages/Register';
 import Login from './pages/NameInput';
+import BlankPage from './components/BlankPage';
 
 const Stack = createNativeStackNavigator();
 
@@ -73,6 +74,13 @@ export default function App() {
           component={Register}
           options={{ title: 'Register' }}
         />
+        <Stack.Screen
+          name='BlankPage'
+          component={BlankPage}
+          options={{ title: 'BlankPage' }}
+        />
+
+
       </Stack.Navigator>
     </NavigationContainer>
   );

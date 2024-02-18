@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import React from 'react';
-import { FlatList, Text, View, StyleSheet } from 'react-native';
+import { FlatList, Text, View, StyleSheet, Button } from 'react-native';
+
 
 import { db } from '../Backend_Firebase/config';
 import { doc, getDoc } from 'firebase/firestore';
@@ -33,32 +34,18 @@ export const ListMembers = ({ route, navigation }) => {
             console.error("Error getting document from groups collection: ", e);
             callback(null);
           }
-            // console.log("yoofufd");
-            // //const mock_collection = collection(db, "Mock_Data");
-            // try{
-            //   const data = await getDocs(collection(db, "groups", groupId));
-            //   const filteredData = data.docs.map((doc) => ({
-            //     ...doc.data(),
-            //     id: doc.id,
-            //   }))
-            //   console.log(filteredData);
-            // }catch(err){
-            //   console.log("There is an error: ", err);
-            // }
     }
-    seeData((members) => {
-        if (members) {
-            console.log(members);
-            setMembers(members);
-        }
-    });
-    // const groupRef = firebase.firestore().collection('groups').doc(groupId);
-    // groupRef.get().then((doc) => {
-    //   if (doc.exists) {
-    //     const groupData = doc.data();
-    //     setMembers(groupData.members); // Assuming 'members' is an array of UIDs
-    //   }
-    // });
+    const interval = setInterval(() => {
+        // Function to fetch data from your database
+        seeData((members) => {
+            if (members) {
+                console.log(members);
+                setMembers(members);
+            }
+        });
+      }, 2000); // Polling every 5 seconds
+    
+    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -68,6 +55,10 @@ export const ListMembers = ({ route, navigation }) => {
           <Text>{memberId}</Text>
         </View>
       ))}
+      <Button
+        title="Next"
+        onPress={() => navigation.navigate('BlankPage')} // Assuming 'BlankPage' is the name of your new route
+      />
     </View>
   );
 };
