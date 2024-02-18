@@ -8,6 +8,9 @@ import HomeScreen from './pages/home.screen';
 import DetailsScreen from './pages/details.screen';
 import NameInput from './pages/NameInput';
 import Preferences from './pages/restrictions.screen';
+import GroupRec from './pages/groupRec.screen';
+import Profile from './pages/profile.screen';
+import Scan from './pages/scan.screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +37,21 @@ export default function App() {
           name='Preferences'
           component={Preferences}
           options={{ title: 'Preferences' }}
+        />
+        <Stack.Screen
+          name='GroupRec'
+          component={GroupRec}
+          options={{ title: 'Group Recommendation' }}
+        />
+        <Stack.Screen
+          name='Profile'
+          component={Profile}
+          options={{ title: 'Profile' }}
+        />
+        <Stack.Screen
+          name='Scan'
+          component={Scan}
+          options={{ title: 'Scanner' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

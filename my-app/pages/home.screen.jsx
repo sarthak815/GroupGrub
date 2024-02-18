@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, StyleSheet, Text, Image } from 'react-native';
 
 import Button from '../components/button.component';
+import navBar from '../components/navbar.component';
 
 const HomeScreen = ({ navigation }) => {
   return (
