@@ -83,10 +83,6 @@ const Restrictions = ({ navigation }) => {
           <ImageButton
             source={require('../icons/nextIcon.png')}
             onPress={() => {
-<<<<<<< Updated upstream
-=======
-            submitRestrictions()
->>>>>>> Stashed changes
             navigation.navigate('CuisineRec')}}/>
         </View>
     </View>

@@ -7,10 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './pages/home.screen';
 import DetailsScreen from './pages/details.screen';
 import NameInput from './pages/NameInput';
-<<<<<<< Updated upstream
 import Restrictions from './pages/restrictions.screen';
-=======
->>>>>>> Stashed changes
 import CuisineRec from './pages/cuisineRec.screen';
 import FoodRec from './pages/foodRec.screen';
 import GroupRec from './pages/groupRec.screen';
@@ -23,7 +20,6 @@ import Register from './pages/Register';
 import Login from './pages/NameInput';
 import BlankPage from './components/BlankPage';
 import Budget from './pages/budget.screen';
-import Restrictions from './pages/restrictions.screen';
 
 const Stack = createNativeStackNavigator();
 

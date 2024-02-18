@@ -187,11 +187,7 @@ const CuisineRec = ({ navigation }) => {
         <View style={styles.imgContainer}>
           <ImageButton
             source={require('../icons/nextIcon.png')}
-<<<<<<< Updated upstream
             onPress={() => navigation.navigate('FoodRec')}/> 
-=======
-            onPress={() => handleImageButtonPress()}/> 
->>>>>>> Stashed changes
         </View>
     </View>
   );
