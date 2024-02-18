@@ -76,7 +76,7 @@ const restrictions = ({ navigation, uid }) => {
         <View style={styles.imgContainer}>
           <ImageButton
             source={require('../icons/nextIcon.png')}
-            onPress={() => {submitRestrictions();
+            onPress={() => {
             navigation.navigate('CuisineRec')}}/>
         </View>
     </View>
