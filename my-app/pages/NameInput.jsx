@@ -47,7 +47,7 @@ const LoginScreen = ({ navigation }) => {
           />
         <Button
           text='Log in'
-          onPress={() => {username => setAddData(username); password => setAddData(password); addField(); navigation.navigate('Preferences', {username});}}
+          onPress={() => {username => setAddData(username); password => setAddData(password); addField(); navigation.navigate('Restrictions', {username});}}
           style={{
             ...styles.button,
             backgroundColor: (username !== '' && password !== '') ? '#265073' : '#ccc',
