@@ -4,14 +4,27 @@ import { StatusBar } from 'expo-status-bar';
 
 import Button from '../components/button.component';
 import ImageButton from '../components/imagebutton.component';
+import { firebase, db } from '../Backend_Firebase/config';
+import { collection, addDoc, getDocs, doc, setDoc, updateDoc } from 'firebase/firestore';
 
-const restrictions = ({ navigation }) => {
+const restrictions = ({ navigation, username }) => {
   const [veggie, setVeggie] = useState(false);
   const [vegan, setVegan] = useState(false);
-  const [dairyFree, setDairyFree] = useState(false);
-  const [keto, setKeto] = useState(false);
+  const [kosher, setKosher] = useState(false);
+  const [halal, setHalal] = useState(false);
   const [gf, setGF] = useState(false);
   const [pesketarian, setPesketarian] = useState(false);
+  
+  const addField = () => {
+    const todoRef = doc(db,'users', 'user-' + username); 
+    const data = {
+      veggie: veggie,
+      vegan: vegan,
+      gf: gf,
+      pesketarian: pesketarian
+    };
+    updateDoc(todoRef, data); 
+  }
 
   return (
     <View style={styles.container}>
@@ -34,36 +47,31 @@ const restrictions = ({ navigation }) => {
         <StatusBar style='auto' />
         <View style={{ flexDirection:"row" }}>
             <Button
-                text='Dairy Free'
-                onPress={() => setDairyFree(!dairyFree)}
-                style={dairyFree ? styles.pressed : styles.button}
+                text='Kosher'
+                onPress={() => setKosher(!kosher)}
+                style={kosher ? styles.pressed : styles.button}
                 textStyles={styles.text}
             />
             <Button
-                text='Keto'
-                onPress={() => setKeto(!keto)}
-                style={keto ? styles.pressed : styles.button}
+                text='Halal'
+                onPress={() => setHalal(!halal)}
+                style={halal ? styles.pressed : styles.button}
                 textStyles={styles.text}
             />
-        </View>
-        <View style={{ flexDirection:"row" }}>
             <Button
                 text='Gluten Free'
                 onPress={() => setGF(!gf)}
                 style={gf ? styles.pressed : styles.button}
                 textStyles={styles.text}
             />
-            <Button
-                text='Pesketarian'
-                onPress={() => setPesketarian(!pesketarian)}
-                style={pesketarian ? styles.pressed : styles.button}
-                textStyles={styles.text}
-            />
         </View>
         <View style={styles.imgContainer}>
           <ImageButton
             source={require('../icons/nextIcon.png')}
-            onPress={() => navigation.navigate('GroupRec')}/>
+            onPress={() => {veggie => setAddData(veggie); vegan => setAddData(vegan);
+              gf => setAddData(gf); pesketarian => setAddData(pesketarian);
+              addField();
+              navigation.navigate('CuisineRec')}}/>
         </View>
     </View>
   );
@@ -79,8 +87,8 @@ const styles = StyleSheet.create({
     paddingTop: 50,
   },
   title: {
-    fontSize: 28,
-    marginBottom: 10,
+    fontSize: 27,
+    marginBottom: 30,
     color: '#265073',
   },
   margin: {
@@ -94,13 +102,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#F9FBEF',
     padding: 10,
     borderRadius: 15,
-    // borderWidth: 2,
-    // borderColor: '#265073',
     margin: 10,
-    justifyContent: 'flex-end'
   },
   imgContainer: {
     alignItems: 'center',
+    flex: 1,
+    justifyContent: 'flex-end',
+    marginBottom: 100,
   },
   pressed: {
     borderColor: '#9AD0C2',
@@ -109,6 +117,5 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 15,
     margin: 10,
-    justifyContent: 'flex-end',
   },
 });

@@ -8,8 +8,6 @@ import ImageButton from '../components/imagebutton.component';
 const restrictions = ({ navigation }) => {
   const [veggie, setVeggie] = useState(false);
   const [vegan, setVegan] = useState(false);
-  const [dairyFree, setDairyFree] = useState(false);
-  const [keto, setKeto] = useState(false);
   const [gf, setGF] = useState(false);
   const [pesketarian, setPesketarian] = useState(false);
 
@@ -34,20 +32,6 @@ const restrictions = ({ navigation }) => {
         <StatusBar style='auto' />
         <View style={{ flexDirection:"row" }}>
             <Button
-                text='Dairy Free'
-                onPress={() => setDairyFree(true)}
-                style={dairyFree ? styles.pressed : styles.button}
-                textStyles={styles.text}
-            />
-            <Button
-                text='Keto'
-                onPress={() => setKeto(true)}
-                style={keto ? styles.pressed : styles.button}
-                textStyles={styles.text}
-            />
-        </View>
-        <View style={{ flexDirection:"row" }}>
-            <Button
                 text='Gluten Free'
                 onPress={() => setGF(true)}
                 style={gf ? styles.pressed : styles.button}
@@ -63,7 +47,7 @@ const restrictions = ({ navigation }) => {
         <View style={styles.imgContainer}>
           <ImageButton
             source={require('../icons/nextIcon.png')}
-            onPress={() => navigation.navigate('Preferences')}/>
+            onPress={() => navigation.navigate('Restrictions')}/>
         </View>
     </View>
   );
