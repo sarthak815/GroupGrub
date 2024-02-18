@@ -5,6 +5,9 @@ import { StatusBar } from 'expo-status-bar';
 import Button from '../components/button.component';
 import ImageButton from '../components/imagebutton.component';
 
+import { firebase, db } from '../Backend_Firebase/config';
+import { collection, addDoc, getDocs, doc, setDoc, updateDoc } from 'firebase/firestore';
+
 const restrictions = ({ navigation }) => {
   const [mediterranean, setMediterranean] = useState(false);
   const [japanese, setJapanese] = useState(false);
@@ -20,6 +23,54 @@ const restrictions = ({ navigation }) => {
   const [irish, setIrish] = useState(false);
   const [turkish, setTurkish] = useState(false);
   const [chinese, setChinese] = useState(false);
+
+  const addArray = () => {
+
+    let restrictionsArr = [];
+    if(mediterranean){
+      restrictions.push('mediterranean');
+    }
+    if(japanese){
+      restrictions.push('japanese');
+    }
+    if(korean){
+      restrictions.push('korean');
+    }
+    if(vietnamese){
+      restrictions.push('vietnamese');
+    }
+    if(mexican){
+      restrictions.push('mexican');
+    }
+    if(italian){
+      restrictions.push('italian');
+    }
+    if(indian){
+      restrictions.push('indian');
+    }
+    if(american){
+      restrictions.push('american');
+    }
+    if(french){
+      restrictions.push('french');
+    }
+    if(hawaiian){
+      restrictions.push('hawaiian');
+    }
+    if(jamaican){
+      restrictions.push('jamaican');
+    }
+    if(irish){
+      restrictions.push('irish');
+    }
+    if(turkish){
+      restrictions.push('turkish');
+    }
+    if(chinese){
+      restrictions.push('chinese');
+    }
+  }
+  
 
   return (
     <View style={styles.container}>

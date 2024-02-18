@@ -24,6 +24,62 @@ const restrictions = ({ navigation }) => {
   const [cocktails, setCocktails] = useState(false);
   const [soup, setSoup] = useState(false);
 
+  const addArray = () => {
+
+    let restrictionsArr = [];
+    if(izza){
+      restrictions.push('izza');
+    }
+    if(sandwich){
+      restrictions.push('sandwich');
+    }
+    if(seafood){
+      restrictions.push('seafood');
+    }
+    if(noodles){
+      restrictions.push('noodles');
+    }
+    if(ramen){
+      restrictions.push('ramen');
+    }
+    if(tacos){
+      restrictions.push('tacos');
+    }
+    if(wine){
+      restrictions.push('wine');
+    }
+    if(barbeque){
+      restrictions.push('barbeque');
+    }
+    if(salad){
+      restrictions.push('salad');
+    }
+    if(dimsum){
+      restrictions.push('dimsum');
+    }
+    if(burger){
+      restrictions.push('burger');
+    }
+    if(kebab){
+      restrictions.push('kebab');
+    }
+    if(bagels){
+      restrictions.push('bagels');
+    }
+    if(coffee){
+      restrictions.push('coffee');
+    }
+    if(dessert){
+      restrictions.push('dessert');
+    }
+    if(cocktails){
+      restrictions.push('cocktails');
+    }
+    if(soup){
+      restrictions.push('soup');
+    }
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.margin}></View>

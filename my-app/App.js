@@ -7,7 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './pages/home.screen';
 import DetailsScreen from './pages/details.screen';
 import NameInput from './pages/NameInput';
-import Restrictions from './pages/restrictions.screen';
+import Preferences from './pages/restrictions.screen';
 import CuisineRec from './pages/cuisineRec.screen';
 import FoodRec from './pages/foodRec.screen';
 import GroupRec from './pages/groupRec.screen';
@@ -42,9 +42,9 @@ export default function App() {
           options={{ title: 'Login' }}
         />
         <Stack.Screen
-          name='Restrictions'
-          component={Restrictions}
-          options={{ title: 'Restrictions' }}
+          name='Preferences'
+          component={Preferences}
+          options={{ title: 'Preferences' }}
         />
         <Stack.Screen
           name='GroupRec'
@@ -81,8 +81,7 @@ export default function App() {
           component={BlankPage}
           options={{ title: 'BlankPage' }}
         />
-
-
+        <Stack.Screen
           name='CuisineRec'
           component={CuisineRec}
           options={{ title: 'Cuisine' }}

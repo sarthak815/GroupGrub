@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { View, TextInput, Button, Text, StyleSheet } from 'react-native';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../Backend_Firebase/config';
-import { doc, setDoc } from 'firebase/firestore';
+import { db, doc, collection, setDoc } from 'firebase/firestore';
  // Ensure these imports are set up correctly for React Native
 
 const Register = ({ navigation }) => {
+  const [addData, setAddData] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -22,6 +23,16 @@ const Register = ({ navigation }) => {
     setConfirmPassword(value);
   }
 
+  function firebaseStuff(uid){
+    name => setAddData(name);
+    addDoc(collection(db, 'userInfo'), {
+      name: name,
+      cuisine: "", 
+      food: "",
+      restrictions: "",
+    });
+  }
+
   function registerUser(){
 
     if (email.length === 0) {
@@ -34,16 +45,11 @@ const Register = ({ navigation }) => {
       setErrorMessage("Please double check password");
     }
     else{
-      const data = {
-        name: name,
-      };
-      const todoRef = doc(db,'userInfo', userCredential); 
-      setDoc(todoRef, data);
       createUserWithEmailAndPassword(auth, email, password).then((userCredential)=>{
         const user = userCredential.user;
-        // setIsSignedIn(true);
-        // Navigate to the setup screen
-        navigation.navigate('Login');
+        const uid = user.uid;
+        firebaseStuff(uid);
+        navigation.navigate('Login', {uid});
       }).catch((error) => {
         const errorCode = error.code;
         setErrorMessage(errorCode === 'auth/email-already-in-use' ? "The email is already in use" : "This is an invalid email");
@@ -56,7 +62,6 @@ const Register = ({ navigation }) => {
       <TextInput
         placeholder='Name'
         style={styles.textInput}
-        secureTextEntry={true}
         onChangeText={setName}
         value={name}
       />

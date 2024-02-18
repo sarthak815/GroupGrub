@@ -111,7 +111,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigation } from '@react-navigation/native';
 import { auth } from '../Backend_Firebase/config';
 
-const Login = ({ navigation }) => {
+const Login = ({ navigation, name}) => {
     const [userName, setUserName] = useState('');
     const [password, setPassword] = useState('');
     const respondBack = () => { 
@@ -124,7 +124,7 @@ const Login = ({ navigation }) => {
                 .then((userCredential) => {
                     //setIsSignedIn(true);
                     //navigation.navigate("Introhome"); // Adjust the navigation route as necessary
-                    navigation.navigate('Preferences')
+                    navigation.navigate('Preferences', { name })
                 })
                 .catch((error) => {
                     const errorCode = error.code;
