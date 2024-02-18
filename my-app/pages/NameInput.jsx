@@ -19,7 +19,7 @@ const Login = ({ navigation }) => {
                 .then((userCredential) => {
                     //setIsSignedIn(true);
                     //navigation.navigate("Introhome"); // Adjust the navigation route as necessary
-                    navigation.navigate('Preferences')
+                    navigation.navigate('Restrictions')
                 })
                 .catch((error) => {
                     const errorCode = error.code;

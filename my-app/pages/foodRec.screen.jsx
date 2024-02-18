@@ -148,7 +148,7 @@ const restrictions = ({ navigation }) => {
         <View style={styles.imgContainer}>
           <ImageButton
             source={require('../icons/nextIcon.png')}
-            onPress={() => navigation.navigate('GroupRec')}/>
+            onPress={() => navigation.navigate('Budget')}/>
         </View>
     </View>
   );
