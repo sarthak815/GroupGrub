@@ -4,14 +4,29 @@ import { StatusBar } from 'expo-status-bar';
 
 import Button from '../components/button.component';
 import ImageButton from '../components/imagebutton.component';
+import { firebase, db } from '../Backend_Firebase/config';
+import { collection, addDoc, getDocs, doc, setDoc, updateDoc } from 'firebase/firestore';
 
-const restrictions = ({ navigation }) => {
+const restrictions = ({ navigation, username }) => {
   const [veggie, setVeggie] = useState(false);
   const [vegan, setVegan] = useState(false);
   const [dairyFree, setDairyFree] = useState(false);
   const [keto, setKeto] = useState(false);
   const [gf, setGF] = useState(false);
   const [pesketarian, setPesketarian] = useState(false);
+  
+  const addField = () => {
+    const todoRef = doc(db,'users', 'user-' + username); 
+    const data = {
+      veggie: veggie,
+      vegan: vegan,
+      dairyFree: dairyFree,
+      keto: keto,
+      gf: gf,
+      pesketarian: pesketarian
+    };
+    updateDoc(todoRef, data); 
+  }
 
   return (
     <View style={styles.container}>
@@ -63,7 +78,11 @@ const restrictions = ({ navigation }) => {
         <View style={styles.imgContainer}>
           <ImageButton
             source={require('../icons/nextIcon.png')}
-            onPress={() => navigation.navigate('GroupRec')}/>
+            onPress={() => {veggie => setAddData(veggie); vegan => setAddData(vegan); 
+              dairyFree => setAddData(dairyFree); keto => setAddData(keto);
+              gf => setAddData(gf); pesketarian => setAddData(pesketarian);
+              addField();
+              navigation.navigate('GroupRec')}}/>
         </View>
     </View>
   );

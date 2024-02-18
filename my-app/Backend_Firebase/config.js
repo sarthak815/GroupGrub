@@ -24,6 +24,7 @@ const analytics = getAnalytics(app);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
+
 // const [posts, setPosts] = useState([]);
 //   // () => navigation.navigate('Details')
 
