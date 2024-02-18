@@ -7,6 +7,9 @@ import ImageButton from '../components/imagebutton.component';
 import { auth } from '../Backend_Firebase/config';
 import { doc, setDoc } from 'firebase/firestore';
 
+import { firebase, db } from '../Backend_Firebase/config';
+import { collection, addDoc, getDocs, doc, setDoc, updateDoc } from 'firebase/firestore';
+
 const restrictions = ({ navigation }) => {
   const [mediterranean, setMediterranean] = useState(false);
   const [japanese, setJapanese] = useState(false);
@@ -23,44 +26,54 @@ const restrictions = ({ navigation }) => {
   const [turkish, setTurkish] = useState(false);
   const [chinese, setChinese] = useState(false);
 
-  const handleImageButtonPress = async() => {
-    // Create an array of all cuisines with their state
-    const cuisineStates = [
-      { name: 'Mediterranean', state: mediterranean },
-      { name: 'Japanese', state: japanese },
-      { name: 'Korean', state: korean },
-      { name: 'Vietnamese', state: vietnamese },
-      { name: 'Mexican', state: mexican },
-      { name: 'Italian', state: italian },
-      { name: 'Indian', state: indian },
-      { name: 'American', state: american },
-      { name: 'French', state: french },
-      { name: 'Hawaiian', state: hawaiian },
-      { name: 'Jamaican', state: jamaican },
-      { name: 'Irish', state: irish },
-      { name: 'Turkish', state: turkish },
-      { name: 'Chinese', state: chinese },
-    ];
+  const addArray = () => {
 
-    // Filter the array to only include the cuisines that are selected (true)
-    const selectedCuisines = cuisineStates.filter(cuisine => cuisine.state).map(cuisine => cuisine.name);
-
-    // Join the selected cuisines into a string
-    const selectedCuisinesString = selectedCuisines.join(', ');
-
-    const user = auth.currentUser;
-    if(user){
-      const userDocRef = doc(db, "users", user.uid);
-      console.log("okk")
-      await updateDoc(userDocRef, {
-        navigate: selectedCuisinesString,
-      });
+    let restrictionsArr = [];
+    if(mediterranean){
+      restrictions.push('mediterranean');
     }
-
-    // Navigate to the FoodRec screen with the selectedCuisinesString as a parameter
-    navigation.navigate('FoodRec', { selectedCuisines: selectedCuisinesString });
-  };
+    if(japanese){
+      restrictions.push('japanese');
+    }
+    if(korean){
+      restrictions.push('korean');
+    }
+    if(vietnamese){
+      restrictions.push('vietnamese');
+    }
+    if(mexican){
+      restrictions.push('mexican');
+    }
+    if(italian){
+      restrictions.push('italian');
+    }
+    if(indian){
+      restrictions.push('indian');
+    }
+    if(american){
+      restrictions.push('american');
+    }
+    if(french){
+      restrictions.push('french');
+    }
+    if(hawaiian){
+      restrictions.push('hawaiian');
+    }
+    if(jamaican){
+      restrictions.push('jamaican');
+    }
+    if(irish){
+      restrictions.push('irish');
+    }
+    if(turkish){
+      restrictions.push('turkish');
+    }
+    if(chinese){
+      restrictions.push('chinese');
+    }
+  }
   
+
   return (
     <View style={styles.container}>
       <View style={styles.margin}></View>

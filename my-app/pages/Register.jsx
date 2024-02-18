@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button, Text, StyleSheet } from 'react-native';
+import { View, TextInput, Text, StyleSheet } from 'react-native';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../Backend_Firebase/config';
-import { doc, setDoc } from 'firebase/firestore';
+import { db, doc, collection, setDoc } from 'firebase/firestore';
  // Ensure these imports are set up correctly for React Native
 
+ import Button from '../components/button.component';
+
 const Register = ({ navigation }) => {
+  const [addData, setAddData] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -22,6 +25,16 @@ const Register = ({ navigation }) => {
     setConfirmPassword(value);
   }
 
+  function firebaseStuff(uid){
+    name => setAddData(name);
+    addDoc(collection(db, 'userInfo'), {
+      name: name,
+      cuisine: "", 
+      food: "",
+      restrictions: "",
+    });
+  }
+
   function registerUser(){
 
     if (email.length === 0) {
@@ -34,16 +47,11 @@ const Register = ({ navigation }) => {
       setErrorMessage("Please double check password");
     }
     else{
-      const data = {
-        name: name,
-      };
-      const todoRef = doc(db,'userInfo', userCredential); 
-      setDoc(todoRef, data);
       createUserWithEmailAndPassword(auth, email, password).then((userCredential)=>{
         const user = userCredential.user;
-        // setIsSignedIn(true);
-        // Navigate to the setup screen
-        navigation.navigate('Login');
+        const uid = user.uid;
+        firebaseStuff(uid);
+        navigation.navigate('Login', {uid});
       }).catch((error) => {
         const errorCode = error.code;
         setErrorMessage(errorCode === 'auth/email-already-in-use' ? "The email is already in use" : "This is an invalid email");
@@ -53,34 +61,50 @@ const Register = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <TextInput
-        placeholder='Name'
-        style={styles.textInput}
-        secureTextEntry={true}
-        onChangeText={setName}
-        value={name}
-      />
-      <TextInput
-        placeholder='Email'
-        style={styles.textInput}
-        onChangeText={changeEmail}
-        value={email}
-      />
-      <TextInput
-        placeholder='Password'
-        style={styles.textInput}
-        secureTextEntry={true}
-        onChangeText={changePassword}
-        value={password}
-      />
-      <TextInput
-        placeholder='Confirm password'
-        style={styles.textInput}
-        secureTextEntry={true}
-        onChangeText={changeConfirmPassword}
-        value={confirmPassword}
-      />
-      <Button title="Register here !" onPress={registerUser} />
+      <View style={styles.loginContainer}>
+        <TextInput
+          placeholder='Name:'
+          placeholderTextColor="#265073" 
+          style={styles.input}
+          secureTextEntry={true}
+          onChangeText={setName}
+          value={name}
+        />
+        <TextInput
+          placeholder='Email:'
+          placeholderTextColor="#265073" 
+          style={styles.input}
+          onChangeText={changeEmail}
+          value={email}
+        />
+        <TextInput
+          placeholder='Password:'
+          placeholderTextColor="#265073" 
+          style={styles.input}
+          secureTextEntry={true}
+          onChangeText={changePassword}
+          value={password}
+        />
+        <TextInput
+          placeholder='Confirm password:'
+          placeholderTextColor="#265073" 
+          style={styles.input}
+          secureTextEntry={true}
+          onChangeText={changeConfirmPassword}
+          value={confirmPassword}
+        />
+        <Button
+          text="Sign up"
+          onPress={registerUser}
+            style={{
+              ...styles.button,
+              backgroundColor: (email !== '' && password !== '') ? '#265073' : '#ccc',
+            }}
+            disabled={!(email != '' && password != '')}
+            textStyles={styles.text}>
+              {/* <Image source={require('../icons/arrow.png')}></Image> */}
+        </Button>
+      </View>
       {errorMessage ? <Text> Error: {errorMessage}</Text> : null}
     </View>
   );
@@ -100,6 +124,42 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
+  loginContainer: {
+    marginBottom: 20,
+    alignItems: 'center',
+  },
+  input: {
+    fontSize: 20,
+    height: 40,
+    borderRadius: 10,
+    marginBottom: 10,
+    padding: 10,
+    width: 330,
+    backgroundColor: '#F8FDED',
+    color: '#265073',
+  },
+  button: {
+    backgroundColor: '#ccc',
+    padding: 10,
+    borderRadius: 15,
+    margin: 15,
+    marginTop: 28,
+    width: 90,
+  },
+  text: {
+    color: '#fff',
+    color: '#FEFFFD',
+    textAlign: 'center',
+    fontSize: 18,
+  },
+  textInput: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginTop: 8,
+    borderRadius: 5,
+    paddingHorizontal: 10,
+},
 });
 
 export default Register;

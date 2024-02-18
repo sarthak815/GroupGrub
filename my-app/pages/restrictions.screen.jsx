@@ -7,23 +7,31 @@ import ImageButton from '../components/imagebutton.component';
 import { firebase, db } from '../Backend_Firebase/config';
 import { collection, addDoc, getDocs, doc, setDoc, updateDoc } from 'firebase/firestore';
 
-const restrictions = ({ navigation, username }) => {
+const restrictions = ({ navigation, uid }) => {
   const [veggie, setVeggie] = useState(false);
   const [vegan, setVegan] = useState(false);
   const [kosher, setKosher] = useState(false);
   const [halal, setHalal] = useState(false);
   const [gf, setGF] = useState(false);
-  const [pesketarian, setPesketarian] = useState(false);
   
-  const addField = () => {
-    const todoRef = doc(db,'users', 'user-' + username); 
-    const data = {
-      veggie: veggie,
-      vegan: vegan,
-      gf: gf,
-      pesketarian: pesketarian
-    };
-    updateDoc(todoRef, data); 
+  const addArray = () => {
+
+    let restrictionsArr = [];
+    if(veggie){
+      restrictions.push('veggie');
+    }
+    if(vegan){
+      restrictions.push('vegan');
+    }
+    if(kosher){
+      restrictions.push('kosher');
+    }
+    if(halal){
+      restrictions.push('halal');
+    }
+    if(gf){
+      restrictions.push('gluten free');
+    }
   }
 
   return (
@@ -68,10 +76,8 @@ const restrictions = ({ navigation, username }) => {
         <View style={styles.imgContainer}>
           <ImageButton
             source={require('../icons/nextIcon.png')}
-            onPress={() => {veggie => setAddData(veggie); vegan => setAddData(vegan);
-              gf => setAddData(gf); pesketarian => setAddData(pesketarian);
-              addField();
-              navigation.navigate('CuisineRec')}}/>
+            onPress={() => {submitRestrictions();
+            navigation.navigate('CuisineRec')}}/>
         </View>
     </View>
   );
