@@ -20,13 +20,13 @@ const restrictions = ({ navigation }) => {
         <View style={{ flexDirection:"row" }}>
             <Button
                 text='Vegetarian'
-                onPress={() => setVeggie(!veggie)}
+                onPress={() => setVeggie(true)}
                 style={veggie ? styles.pressed : styles.button}
                 textStyles={styles.text}
             />
             <Button
                 text='Vegan'
-                onPress={() => setVegan(!vegan)}
+                onPress={() => setVegan(true)}
                 style={vegan ? styles.pressed : styles.button}
                 textStyles={styles.text}
             />
@@ -35,13 +35,13 @@ const restrictions = ({ navigation }) => {
         <View style={{ flexDirection:"row" }}>
             <Button
                 text='Dairy Free'
-                onPress={() => setDairyFree(!dairyFree)}
+                onPress={() => setDairyFree(true)}
                 style={dairyFree ? styles.pressed : styles.button}
                 textStyles={styles.text}
             />
             <Button
                 text='Keto'
-                onPress={() => setKeto(!keto)}
+                onPress={() => setKeto(true)}
                 style={keto ? styles.pressed : styles.button}
                 textStyles={styles.text}
             />
@@ -49,13 +49,13 @@ const restrictions = ({ navigation }) => {
         <View style={{ flexDirection:"row" }}>
             <Button
                 text='Gluten Free'
-                onPress={() => setGF(!gf)}
+                onPress={() => setGF(true)}
                 style={gf ? styles.pressed : styles.button}
                 textStyles={styles.text}
             />
             <Button
                 text='Pesketarian'
-                onPress={() => setPesketarian(!pesketarian)}
+                onPress={() => setPesketarian(true)}
                 style={pesketarian ? styles.pressed : styles.button}
                 textStyles={styles.text}
             />
@@ -63,7 +63,7 @@ const restrictions = ({ navigation }) => {
         <View style={styles.imgContainer}>
           <ImageButton
             source={require('../icons/nextIcon.png')}
-            onPress={() => navigation.navigate('GroupRec')}/>
+            onPress={() => navigation.navigate('Preferences')}/>
         </View>
     </View>
   );
