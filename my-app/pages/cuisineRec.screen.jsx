@@ -4,6 +4,8 @@ import { StatusBar } from 'expo-status-bar';
 
 import Button from '../components/button.component';
 import ImageButton from '../components/imagebutton.component';
+import { auth } from '../Backend_Firebase/config';
+import { doc, setDoc } from 'firebase/firestore';
 
 const restrictions = ({ navigation }) => {
   const [mediterranean, setMediterranean] = useState(false);
@@ -21,6 +23,44 @@ const restrictions = ({ navigation }) => {
   const [turkish, setTurkish] = useState(false);
   const [chinese, setChinese] = useState(false);
 
+  const handleImageButtonPress = async() => {
+    // Create an array of all cuisines with their state
+    const cuisineStates = [
+      { name: 'Mediterranean', state: mediterranean },
+      { name: 'Japanese', state: japanese },
+      { name: 'Korean', state: korean },
+      { name: 'Vietnamese', state: vietnamese },
+      { name: 'Mexican', state: mexican },
+      { name: 'Italian', state: italian },
+      { name: 'Indian', state: indian },
+      { name: 'American', state: american },
+      { name: 'French', state: french },
+      { name: 'Hawaiian', state: hawaiian },
+      { name: 'Jamaican', state: jamaican },
+      { name: 'Irish', state: irish },
+      { name: 'Turkish', state: turkish },
+      { name: 'Chinese', state: chinese },
+    ];
+
+    // Filter the array to only include the cuisines that are selected (true)
+    const selectedCuisines = cuisineStates.filter(cuisine => cuisine.state).map(cuisine => cuisine.name);
+
+    // Join the selected cuisines into a string
+    const selectedCuisinesString = selectedCuisines.join(', ');
+
+    const user = auth.currentUser;
+    if(user){
+      const userDocRef = doc(db, "users", user.uid);
+      console.log("okk")
+      await updateDoc(userDocRef, {
+        navigate: selectedCuisinesString,
+      });
+    }
+
+    // Navigate to the FoodRec screen with the selectedCuisinesString as a parameter
+    navigation.navigate('FoodRec', { selectedCuisines: selectedCuisinesString });
+  };
+  
   return (
     <View style={styles.container}>
       <View style={styles.margin}></View>
@@ -126,7 +166,7 @@ const restrictions = ({ navigation }) => {
         <View style={styles.imgContainer}>
           <ImageButton
             source={require('../icons/nextIcon.png')}
-            onPress={() => navigation.navigate('FoodRec')}/>
+            onPress={() => handleImageButtonPress}/> 
         </View>
     </View>
   );

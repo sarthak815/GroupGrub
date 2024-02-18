@@ -79,11 +79,9 @@ export default function App() {
         <Stack.Screen
           name='BlankPage'
           component={BlankPage}
-          options={{ title: 'BlankPage' }}
+          options={{ title: 'BlankPage'}}
         />
-
-
-          name='CuisineRec'
+        <Stack.Screen name='CuisineRec'
           component={CuisineRec}
           options={{ title: 'Cuisine' }}
         />
@@ -91,6 +89,11 @@ export default function App() {
           name='FoodRec'
           component={FoodRec}
           options={{ title: 'Food Preference' }}
+        />
+        <Stack.Screen
+          name='GroupIdGenerator'
+          component={GroupIdGenerator}
+          options={{ title: 'GroupIdGenerator' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

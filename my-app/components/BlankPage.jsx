@@ -1,7 +1,8 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-const BlankPage = () => {
+const BlankPage = ({navigation}) => {
+  
   return (
     <View style={styles.container}>
       <Text>This is a blank page.</Text>

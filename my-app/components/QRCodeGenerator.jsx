@@ -5,6 +5,7 @@ import QRCode from 'react-native-qrcode-svg';
 const QRCodeGenerator = ({ groupId }) => {
     const [showQR, setShowQR] = useState(false);
 
+
     // Use an effect to monitor changes in groupId.
     // If groupId changes and is not empty, show the QR code.
     useEffect(() => {
