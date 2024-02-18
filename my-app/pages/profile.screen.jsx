@@ -63,7 +63,7 @@ const restrictions = ({ navigation }) => {
         <View style={styles.imgContainer}>
           <ImageButton
             source={require('../icons/nextIcon.png')}
-            onPress={() => navigation.navigate('Preferences')}/>
+            onPress={() => navigation.navigate('Restrictions')}/>
         </View>
     </View>
   );
