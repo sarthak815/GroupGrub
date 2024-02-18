@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
-
 import Button from '../components/button.component';
+import { db } from '../Backend_Firebase/config';
+import { getDocs, collection } from 'firebase/firestore';
 
 const HomeScreen = ({ navigation }) => {
-  const [posts, setPosts] = useState([]);
-
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Welcome to Group Grub</Text>
@@ -18,6 +17,16 @@ const HomeScreen = ({ navigation }) => {
       <Button
         title='Create an Account / Log In'
         onPress={() => navigation.navigate('NameInput')}
+        style={styles.button}
+      />
+      <Button
+        title='Creating QR Code'
+        onPress={() => navigation.navigate('QR_Scan')}
+        style={styles.button}
+      />
+      <Button
+        title='Scanning QR Code'
+        onPress={() => navigation.navigate('Scan')}
         style={styles.button}
       />
       <StatusBar style='auto' />

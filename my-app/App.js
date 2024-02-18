@@ -8,6 +8,8 @@ import HomeScreen from './pages/home.screen';
 import DetailsScreen from './pages/details.screen';
 import NameInput from './pages/NameInput';
 import Preferences from './pages/restrictions.screen';
+import GroupIdGenerator from './components/GroupIdGenerator';
+import QRCodeScannerComponent from './components/QRScan';
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +36,16 @@ export default function App() {
           name='Preferences'
           component={Preferences}
           options={{ title: 'restrictions' }}
+        />
+        <Stack.Screen
+          name='QR_Scan'
+          component={GroupIdGenerator}
+          options={{ title: 'QR_Scan' }}
+        />
+        <Stack.Screen
+          name='Scan'
+          component={QRCodeScannerComponent}
+          options={{ title: 'Scan' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
