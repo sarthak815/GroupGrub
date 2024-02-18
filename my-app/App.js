@@ -10,6 +10,9 @@ import NameInput from './pages/NameInput';
 import Preferences from './pages/restrictions.screen';
 import GroupIdGenerator from './components/GroupIdGenerator';
 import QRCodeScannerComponent from './components/QRScan';
+import GroupRec from './pages/groupRec.screen';
+import Profile from './pages/profile.screen';
+import Scan from './pages/scan.screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -30,12 +33,27 @@ export default function App() {
         <Stack.Screen
           name='NameInput'
           component={NameInput}
-          options={{ title: 'NameInput' }}
+          options={{ title: 'Login' }}
         />
         <Stack.Screen
           name='Preferences'
           component={Preferences}
-          options={{ title: 'restrictions' }}
+          options={{ title: 'Preferences' }}
+        />
+        <Stack.Screen
+          name='GroupRec'
+          component={GroupRec}
+          options={{ title: 'Group Recommendation' }}
+        />
+        <Stack.Screen
+          name='Profile'
+          component={Profile}
+          options={{ title: 'Profile' }}
+        />
+        <Stack.Screen
+          name='Scan'
+          component={Scan}
+          options={{ title: 'Scanner' }}
         />
         <Stack.Screen
           name='QR_Scan'
@@ -55,7 +73,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#FEFFFD',
     alignItems: 'center',
     justifyContent: 'center',
   },

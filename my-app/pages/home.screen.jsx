@@ -4,52 +4,75 @@ import { StatusBar } from 'expo-status-bar';
 import Button from '../components/button.component';
 import { db } from '../Backend_Firebase/config';
 import { getDocs, collection } from 'firebase/firestore';
+import React, { useState } from 'react';
+import { View, StyleSheet, Text, Image } from 'react-native';
+import Button from '../components/button.component';
+import navBar from '../components/navbar.component';
 
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Welcome to Group Grub</Text>
-      <Button
-        title='Go to Details'
-        onPress={() => navigation.navigate('Details')}
-        style={styles.button}
-      />
-      <Button
-        title='Create an Account / Log In'
-        onPress={() => navigation.navigate('NameInput')}
-        style={styles.button}
-      />
-      <Button
-        title='Creating QR Code'
-        onPress={() => navigation.navigate('QR_Scan')}
-        style={styles.button}
-      />
-      <Button
-        title='Scanning QR Code'
-        onPress={() => navigation.navigate('Scan')}
-        style={styles.button}
-      />
-      <StatusBar style='auto' />
+      <Text style={styles.title}>Welcome to GroupGrub</Text>
+      <View style={styles.inputContainer}>
+      <Image source={require('../logo/logo.png')} style={styles.logo}></Image>
+        <Button
+          text='Create an Account / Log in'
+          onPress={() => navigation.navigate('NameInput')}
+          style={styles.button}
+          textStyles={styles.text}
+        >
+          <Image source={require('../icons/arrow.png')}></Image>
+        </Button>
+      </View>
     </View>
   );
 };
 
-export default HomeScreen;
-
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    flex: 1,
+    padding: 20,
+    paddingTop: 100,
     justifyContent: 'center',
-    height: '100%',
   },
-  text: {
-    fontSize: 30
+  title: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    marginBottom: 60,
+    textAlign: 'center',
+    color: '#265073',
+  },
+  inputContainer: {
+    marginBottom: 20,
+    flex: 1,
+  },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    marginBottom: 10,
+    padding: 10,
   },
   button: {
-    backgroundColor: '#4fb489',
-    padding: 10,
+    backgroundColor: '#265174',
+    padding: 15,
     borderRadius: 15,
-    margin: 10,
+    margin: 15,
+  },
+  text: {
+    color: '#fff',
+    fontSize: 20,
+    textAlign: 'center',
+  },
+  imgContainer: {
+  },
+  logo: {
+    width: 300,
+    height: 300,
+    marginBottom: 50,
+    alignSelf: 'center',
+    resizeMode: 'contain',
   },
 });
+
+export default HomeScreen;
