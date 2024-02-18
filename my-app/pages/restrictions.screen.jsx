@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     paddingTop: 50,
   },
   title: {
-    fontSize: 30,
+    fontSize: 28,
     marginBottom: 10,
     color: '#265073',
   },

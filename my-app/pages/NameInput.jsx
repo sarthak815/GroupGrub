@@ -22,29 +22,34 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome</Text>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="Username"
-          value={username}
-          onChangeText={setUsername}
-          autoCapitalize="none"
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Password"
-          value={password}
-          onChangeText={setPassword}
-          secureTextEntry
-        />
-        {username != '' && password != '' && <Button
+      <View style={styles.loginContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder="User:"
+            placeholderTextColor="#265073" 
+            value={username}
+            onChangeText={setUsername}
+            autoCapitalize="none"
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Pass:"
+            placeholderTextColor="#265073"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+          />
+        <Button
           text='Log in'
           onPress={() => {username => setAddData(username); password => setAddData(password); addField(); navigation.navigate('Preferences');}}
-          style={styles.button}
+          style={{
+            ...styles.button,
+            backgroundColor: (username !== '' && password !== '') ? '#265073' : '#ccc',
+          }}
+          disabled={!(username != '' && password != '')}
           textStyles={styles.text}>
             <Image source={require('../icons/arrow.png')}></Image>
-        </Button> }
+        </Button>
       </View>
     </View>
   );
@@ -62,24 +67,34 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     textAlign: 'center',
   },
+  loginContainer: {
+    marginBottom: 20,
+    alignItems: 'center',
+  },
   inputContainer: {
     marginBottom: 20,
   },
   input: {
+    fontSize: 20,
     height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
+    borderRadius: 10,
     marginBottom: 10,
     padding: 10,
+    width: 330,
+    backgroundColor: '#F8FDED',
+    color: '#265073',
   },
   button: {
-    backgroundColor: '#ccc',
     padding: 10,
     borderRadius: 15,
     margin: 15,
+    marginTop: 28,
+    width: 90,
   },
   text: {
-    color: '#fff',
+    color: '#FEFFFD',
+    textAlign: 'center',
+    fontSize: 18,
   },
   imgContainer: {
     alignItems: 'center',
