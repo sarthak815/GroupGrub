@@ -9,7 +9,7 @@ import { auth } from '../Backend_Firebase/config';
 import { firebase, db } from '../Backend_Firebase/config';
 import { collection, addDoc, getDocs, doc, setDoc, updateDoc } from 'firebase/firestore';
 
-const restrictions = ({ navigation }) => {
+const CuisineRec = ({ navigation }) => {
   const [mediterranean, setMediterranean] = useState(false);
   const [japanese, setJapanese] = useState(false);
   const [korean, setKorean] = useState(false);
@@ -25,52 +25,61 @@ const restrictions = ({ navigation }) => {
   const [turkish, setTurkish] = useState(false);
   const [chinese, setChinese] = useState(false);
 
-  const addArray = () => {
-
-    let restrictionsArr = [];
+  const handleImageButtonPress = async() => {
+    let restrictionsArr = "";
     if(mediterranean){
-      restrictions.push('mediterranean');
+      restrictionsArr += ' mediterranean';
     }
     if(japanese){
-      restrictions.push('japanese');
+      restrictionsArr += ' japanese';
     }
     if(korean){
-      restrictions.push('korean');
+      restrictionsArr += ' korean';
     }
     if(vietnamese){
-      restrictions.push('vietnamese');
+      restrictionsArr += ' vietnamese';
     }
     if(mexican){
-      restrictions.push('mexican');
+      restrictionsArr += ' mexican';
     }
     if(italian){
-      restrictions.push('italian');
+      restrictionsArr += ' italian';
     }
     if(indian){
-      restrictions.push('indian');
+      restrictionsArr += ' indian';
     }
     if(american){
-      restrictions.push('american');
+      restrictionsArr += ' american';
     }
     if(french){
-      restrictions.push('french');
+      restrictionsArr += ' french';
     }
     if(hawaiian){
-      restrictions.push('hawaiian');
+      restrictionsArr += ' hawaiian';
     }
     if(jamaican){
-      restrictions.push('jamaican');
+      restrictionsArr += ' jamaican';
     }
     if(irish){
-      restrictions.push('irish');
+      restrictionsArr += ' irish';
     }
     if(turkish){
-      restrictions.push('turkish');
+      restrictionsArr += ' turkish';
     }
     if(chinese){
-      restrictions.push('chinese');
+      restrictionsArr += ' chinese';
     }
+    const user = auth.currentUser;
+    if(user.uid){
+      const ref = doc(db, "users", user.uid);
+      await updateDoc(ref, {
+        cuisine: restrictionsArr,
+      });
+    }
+    navigation.navigate("FoodRec");
   }
+  // const addArray = () => {
+
   
 
   return (
@@ -178,13 +187,17 @@ const restrictions = ({ navigation }) => {
         <View style={styles.imgContainer}>
           <ImageButton
             source={require('../icons/nextIcon.png')}
+<<<<<<< Updated upstream
             onPress={() => navigation.navigate('FoodRec')}/> 
+=======
+            onPress={() => handleImageButtonPress()}/> 
+>>>>>>> Stashed changes
         </View>
     </View>
   );
 };
 
-export default restrictions;
+export default CuisineRec;
 
 const styles = StyleSheet.create({
   container: {

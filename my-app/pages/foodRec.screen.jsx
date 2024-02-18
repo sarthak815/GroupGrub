@@ -4,8 +4,9 @@ import { StatusBar } from 'expo-status-bar';
 
 import Button from '../components/button.component';
 import ImageButton from '../components/imagebutton.component';
+import { db } from '../Backend_Firebase/config';
 
-const restrictions = ({ navigation }) => {
+const foodRec = ({ navigation }) => {
   const [pizza, setPizza] = useState(false);
   const [sandwich, setSandwich] = useState(false);
   const [seafood, setSeafood] = useState(false);
@@ -24,60 +25,67 @@ const restrictions = ({ navigation }) => {
   const [cocktails, setCocktails] = useState(false);
   const [soup, setSoup] = useState(false);
 
-  const addArray = () => {
-
-    let restrictionsArr = [];
-    if(izza){
-      restrictions.push('izza');
+  const addArray = async() => {
+    let restrictions = "";
+    if(pizza){
+      restrictions += ' pizza';
     }
     if(sandwich){
-      restrictions.push('sandwich');
+      restrictions += ' sandwich';
     }
     if(seafood){
-      restrictions.push('seafood');
+      restrictions+= ' seafood';
     }
     if(noodles){
-      restrictions.push('noodles');
+      restrictions+= ' noodles';
     }
     if(ramen){
-      restrictions.push('ramen');
+      restrictions+= ' ramen';
     }
     if(tacos){
-      restrictions.push('tacos');
+      restrictions+= ' tacos';
     }
     if(wine){
-      restrictions.push('wine');
+      restrictions+= ' wine';
     }
     if(barbeque){
-      restrictions.push('barbeque');
+      restrictions+= ' barbeque';
     }
     if(salad){
-      restrictions.push('salad');
+      restrictions+= ' salad';
     }
     if(dimsum){
-      restrictions.push('dimsum');
+      restrictions+= ' dimsum';
     }
     if(burger){
-      restrictions.push('burger');
+      restrictions+= ' burger';
     }
     if(kebab){
-      restrictions.push('kebab');
+      restrictions+= ' kebab';
     }
     if(bagels){
-      restrictions.push('bagels');
+      restrictions+= ' bagels';
     }
     if(coffee){
-      restrictions.push('coffee');
+      restrictions+= ' coffee';
     }
     if(dessert){
-      restrictions.push('dessert');
+      restrictions+= ' dessert';
     }
     if(cocktails){
-      restrictions.push('cocktails');
+      restrictions+= ' cocktails';
     }
     if(soup){
-      restrictions.push('soup');
+      restrictions+= ' soup';
     }
+    const user = auth.currentUser;
+    if(user.uid){
+      const ref = doc(db, "users", user.uid);
+      await updateDoc(ref, {
+        foodRec: restrictions,
+      });
+    }
+
   }
 
   return (
@@ -204,13 +212,15 @@ const restrictions = ({ navigation }) => {
         <View style={styles.imgContainer}>
           <ImageButton
             source={require('../icons/nextIcon.png')}
-            onPress={() => navigation.navigate('Budget')}/>
+            onPress={() => {
+              addArray();
+              navigation.navigate('Budget')}}/>
         </View>
     </View>
   );
 };
 
-export default restrictions;
+export default foodRec;
 
 const styles = StyleSheet.create({
   container: {

@@ -4,33 +4,39 @@ import { StatusBar } from 'expo-status-bar';
 
 import Button from '../components/button.component';
 import ImageButton from '../components/imagebutton.component';
-import { firebase, db } from '../Backend_Firebase/config';
+import { firebase, db, auth } from '../Backend_Firebase/config';
 import { collection, addDoc, getDocs, doc, setDoc, updateDoc } from 'firebase/firestore';
 
-const restrictions = ({ navigation, uid }) => {
+const Restrictions = ({ navigation }) => {
   const [veggie, setVeggie] = useState(false);
   const [vegan, setVegan] = useState(false);
   const [kosher, setKosher] = useState(false);
   const [halal, setHalal] = useState(false);
   const [gf, setGF] = useState(false);
   
-  const addArray = () => {
-
-    let restrictionsArr = [];
+  const submitRestrictions = async() => {
+    let restrictions = "";
     if(veggie){
-      restrictions.push('veggie');
+      restrictions += ' veggie';
     }
     if(vegan){
-      restrictions.push('vegan');
+      restrictions += ' vegan';
     }
     if(kosher){
-      restrictions.push('kosher');
+      restrictions += ' kosher';
     }
     if(halal){
-      restrictions.push('halal');
+      restrictions += ' halal';
     }
     if(gf){
-      restrictions.push('gluten free');
+      restrictions += ' gluten free';
+    }
+    const user = auth.currentUser;
+    if(user.uid){
+      const ref = doc(db, "users", user.uid);
+      await updateDoc(ref, {
+        dietaryRestrictions: restrictions,
+      });
     }
   }
 
@@ -77,13 +83,17 @@ const restrictions = ({ navigation, uid }) => {
           <ImageButton
             source={require('../icons/nextIcon.png')}
             onPress={() => {
+<<<<<<< Updated upstream
+=======
+            submitRestrictions()
+>>>>>>> Stashed changes
             navigation.navigate('CuisineRec')}}/>
         </View>
     </View>
   );
 };
 
-export default restrictions;
+export default Restrictions;
 
 const styles = StyleSheet.create({
   container: {
