@@ -7,7 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './pages/home.screen';
 import DetailsScreen from './pages/details.screen';
 import NameInput from './pages/NameInput';
-import Preferences from './pages/restrictions.screen';
+import Restrictions from './pages/restrictions.screen';
 import CuisineRec from './pages/cuisineRec.screen';
 import FoodRec from './pages/foodRec.screen';
 import GroupRec from './pages/groupRec.screen';
@@ -43,9 +43,9 @@ export default function App() {
           options={{ title: 'Login' }}
         />
         <Stack.Screen
-          name='Preferences'
-          component={Preferences}
-          options={{ title: 'Preferences' }}
+          name='Restrictions'
+          component={Restrictions}
+          options={{ title: 'Restrictions' }}
         />
         <Stack.Screen
           name='GroupRec'
@@ -89,12 +89,17 @@ export default function App() {
         <Stack.Screen
           name='FoodRec'
           component={FoodRec}
-          options={{ title: 'Food Preference' }}
+          options={{ title: 'FoodRec' }}
         />
         <Stack.Screen
           name='GroupIdGenerator'
           component={GroupIdGenerator}
           options={{ title: 'GroupIdGenerator' }}
+        />
+        <Stack.Screen
+          name='Budget'
+          component={Budget}
+          options={{ title: 'Budget' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
