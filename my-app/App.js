@@ -19,6 +19,7 @@ import { ListMembers } from './components/ListComponents';
 import Register from './pages/Register';
 import Login from './pages/NameInput';
 import BlankPage from './components/BlankPage';
+import Budget from './pages/budget.screen';
 
 const Stack = createNativeStackNavigator();
 
@@ -90,6 +91,11 @@ export default function App() {
           name='FoodRec'
           component={FoodRec}
           options={{ title: 'Food Preference' }}
+        />
+        <Stack.Screen
+          name='Budget'
+          component={Budget}
+          options={{ title: 'Budget' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
