@@ -29,6 +29,8 @@ const App = ({navigation}) => {
   return (
     <View style={{flex: 1, padding: 24}}>
       <Card restaurant="BIRD DOG" address="420 Ramona St." rating={4.4}/>
+      <Card restaurant="Evvia Estiatorio" address="420 Emerson St." rating={4.6}/>
+      <Card restaurant="Teleferic Barcelona Palo Alto" address="855 El Camino Real #130" rating={4.5}/>
       <Button
         title='Creating QR Code'
         onPress={() => navigation.navigate('QR_Generate')}
