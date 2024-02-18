@@ -18,8 +18,6 @@ const LoginScreen = ({ navigation }) => {
       password: password,
       veggie: false,
       vegan: false,
-      dairyFree: false,
-      keto: false,
       gf: false,
       pesketarian: false,
     };
