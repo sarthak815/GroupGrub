@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, TextInput, Button, Text, StyleSheet } from 'react-native';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../Backend_Firebase/config';
+import { doc, setDoc } from 'firebase/firestore';
  // Ensure these imports are set up correctly for React Native
 
 const Register = ({ navigation }) => {
@@ -9,6 +10,7 @@ const Register = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [name, setName] = useState('');
 
   function changeEmail(value){
     setEmail(value);
@@ -21,6 +23,7 @@ const Register = ({ navigation }) => {
   }
 
   function registerUser(){
+
     if (email.length === 0) {
       setErrorMessage("Email not entered");
     }
@@ -31,6 +34,11 @@ const Register = ({ navigation }) => {
       setErrorMessage("Please double check password");
     }
     else{
+      const data = {
+        name: name,
+      };
+      const todoRef = doc(db,'userInfo', userCredential); 
+      setDoc(todoRef, data);
       createUserWithEmailAndPassword(auth, email, password).then((userCredential)=>{
         const user = userCredential.user;
         // setIsSignedIn(true);
@@ -45,6 +53,13 @@ const Register = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <TextInput
+        placeholder='Name'
+        style={styles.textInput}
+        secureTextEntry={true}
+        onChangeText={setName}
+        value={name}
+      />
       <TextInput
         placeholder='Email'
         style={styles.textInput}

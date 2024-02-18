@@ -4,67 +4,13 @@ import { StatusBar } from 'expo-status-bar';
 
 import Button from '../components/button.component';
 import ImageButton from '../components/imagebutton.component';
+import { auth } from '../Backend_Firebase/config';
 
 const restrictions = ({ navigation }) => {
-  const [veggie, setVeggie] = useState(false);
-  const [vegan, setVegan] = useState(false);
-  const [dairyFree, setDairyFree] = useState(false);
-  const [keto, setKeto] = useState(false);
-  const [gf, setGF] = useState(false);
-  const [pesketarian, setPesketarian] = useState(false);
 
   return (
     <View style={styles.container}>
-      <View style={styles.margin}></View>
-        <Text style={styles.title}>Please Select your Food Preferences:</Text>
-        <View style={{ flexDirection:"row" }}>
-            <Button
-                text='Vegetarian'
-                onPress={() => setVeggie(true)}
-                style={veggie ? styles.pressed : styles.button}
-                textStyles={styles.text}
-            />
-            <Button
-                text='Vegan'
-                onPress={() => setVegan(true)}
-                style={vegan ? styles.pressed : styles.button}
-                textStyles={styles.text}
-            />
-        </View>
-        <StatusBar style='auto' />
-        <View style={{ flexDirection:"row" }}>
-            <Button
-                text='Dairy Free'
-                onPress={() => setDairyFree(true)}
-                style={dairyFree ? styles.pressed : styles.button}
-                textStyles={styles.text}
-            />
-            <Button
-                text='Keto'
-                onPress={() => setKeto(true)}
-                style={keto ? styles.pressed : styles.button}
-                textStyles={styles.text}
-            />
-        </View>
-        <View style={{ flexDirection:"row" }}>
-            <Button
-                text='Gluten Free'
-                onPress={() => setGF(true)}
-                style={gf ? styles.pressed : styles.button}
-                textStyles={styles.text}
-            />
-            <Button
-                text='Pesketarian'
-                onPress={() => setPesketarian(true)}
-                style={pesketarian ? styles.pressed : styles.button}
-                textStyles={styles.text}
-            />
-        </View>
-        <View style={styles.imgContainer}>
-          <ImageButton
-            source={require('../icons/nextIcon.png')}
-            onPress={() => navigation.navigate('Preferences')}/>
-        </View>
+
     </View>
   );
 };
